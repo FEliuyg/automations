@@ -1,9 +1,8 @@
 name: Figma EasyV Charts Components
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '30 1,9 * * *'
 
 jobs:
   build:
