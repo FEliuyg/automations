@@ -7,9 +7,6 @@ dotenv.config();
 const secretKey = process.env.DINGTALK_SECRET;
 const baseUrl = process.env.DINGTALK_WEBHOOK_URL;
 
-console.log('secretKey', secretKey);
-console.log('baseUrl', baseUrl);
-
 export async function sendDingtalkMessage(message) {
   const time = Date.now();
   const stringToSign = `${time}\n${secretKey}`;
