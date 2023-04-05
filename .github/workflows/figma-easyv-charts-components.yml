@@ -2,7 +2,7 @@ name: Figma EasyV Charts Components
 
 on:
   schedule:
-    - cron: '30 3,4,11,12 * * *'
+    - cron: '30 3,4,5,11,12 * * *'
 
 jobs:
   build:
@@ -17,9 +17,12 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Create .env file
+        env:
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          DINGTALK_WEBHOOK_URL: ${{ secrets.DINGTALK_WEBHOOK_URL }}
         run: |
           touch .env
-          echo DINGTALK_SECRET="${{ vars.DINGTALK_SECRET }}">> .env
-          echo DINGTALK_WEBHOOK_URL="${{ vars.DINGTALK_WEBHOOK_URL }}" >> .env
+          echo DINGTALK_SECRET="$DINGTALK_SECRET">> .env
+          echo DINGTALK_WEBHOOK_URL="$DINGTALK_WEBHOOK_URL" >> .env
       - name: Send Dingtalk Message
         run: npm run charts
