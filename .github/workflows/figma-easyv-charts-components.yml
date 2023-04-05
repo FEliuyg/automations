@@ -16,5 +16,10 @@ jobs:
           node-version: '16.x'
       - name: Install dependencies
         run: npm install
+      - name: Create .env file
+        run: |
+          touch .env
+          echo DINGTALK_SECRET="${{ vars.DINGTALK_SECRET }}">> .env
+          echo DINGTALK_WEBHOOK_URL="${{ vars.DINGTALK_WEBHOOK_URL }}" >> .env
       - name: Send Dingtalk Message
         run: npm run charts
