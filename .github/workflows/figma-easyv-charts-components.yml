@@ -2,7 +2,7 @@ name: Figma EasyV Charts Components
 
 on:
   schedule:
-    - cron: '30 3,4,5,11,12 * * *'
+    - cron: '0 3,4,5,8 * * *'
 
 jobs:
   build:
